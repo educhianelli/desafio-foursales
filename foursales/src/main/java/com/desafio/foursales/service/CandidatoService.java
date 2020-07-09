@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.desafio.foursales.entity.CandidatoEntity;
+import com.desafio.foursales.entity.CartaoEntity;
 import com.desafio.foursales.repository.CandidatoRepository;
 import com.desafio.foursales.repository.CartaoRepository;
 import com.desafio.foursales.repository.EnderecoRepository;
@@ -57,15 +58,15 @@ public class CandidatoService {
 		candidato.setCpf(candidatoEntity.getCpf());
 
 
-/*		for (CartaoEntity c : candidatoEntity.getCartoes()) {
+		for (CartaoEntity c : candidatoEntity.getCartoes()) {
 			c.setCandidato(candidato);
 			candidato.getCartoes().add(c);
 		}
-*/
+
 
 		candidato = repository.save(candidato);
 
-	//	cartaoRepository.saveAll(candidato.getCartoes());
+		cartaoRepository.saveAll(candidato.getCartoes());
 		
 		return candidato;
 	}
